@@ -9,14 +9,14 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'desc')->get();
+        $posts = Post::with(['user', 'comments', 'likes'])->withCount('comments')->orderBy('created_at', 'desc')->get();
         $user = Auth::user();
         return view('posts.index', compact('posts', 'user'));
     }
 
     public function show($id)
     {
-        $post = Post::findOrFail($id);
+        $post = Post::with(['user', 'comments.user', 'likes'])->withCount('comments')->findOrFail($id);
         $comments = $post->comments;
         return view('posts.show', compact('post', 'comments'));
     }

@@ -8,7 +8,7 @@
 </head>
 <body class="bg-gray-100">
     <nav class="bg-white shadow">
-        <div class="container mx-auto px-4 py-4">
+        <div class="container mx-auto px-40 py-4">
             <div class="flex justify-between items-center">
                 <div class="flex items-center">
                     <a class="text-xl font-bold" href="/profile">
@@ -19,11 +19,11 @@
                     </a>
                     <span class="pl-6 font-bold text-lg">Selamat datang, {{ Auth::user()->name }}</span>
                 </div>
-                <div class="flex space-x-8 items-center text-lg">
+                <div class="flex space-x-8 items-center text-base">
                     @guest
                         <a class="text-gray-600 hover:text-gray-800" href="{{ route('login') }}">Login</a>
                     @else
-                        <a class="text-gray-600 hover:text-gray-800" href="{{ route('posts.index') }}">Post</a>
+                        <a class="text-gray-600 hover:text-gray-800" href="{{ route('posts.index') }}">Postingan</a>
                         <a class="text-gray-600 hover:text-gray-800" href="{{ route('profile.show') }}">Profil</a>
                         
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -40,7 +40,7 @@
         </div>
     </nav>
 
-    <div class="container mx-auto px-4 py-8">
+    <div class="container mx-auto px-40 py-8">
         @yield('content')
     </div>
 </body>

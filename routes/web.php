@@ -17,12 +17,6 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// Route::resource('users', UserController::class);
-// Route::resource('posts', PostController::class);
-// Route::post('posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
-// Route::post('posts/{post}/likes', [LikeController::class, 'store'])->name('likes.store');
-// Route::delete('posts/{post}/likes', [LikeController::class, 'destroy'])->name('likes.destroy');
-
 Route::middleware(['auth'])->group(function () {
   Route::get('/', [PostController::class, 'index'])->name('index');
   Route::get('/posts', [PostController::class, 'index'])->name('posts.index');

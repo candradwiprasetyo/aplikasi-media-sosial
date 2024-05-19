@@ -9,13 +9,6 @@ class LikeController extends Controller
 {
     public function store($postId)
     {
-        // $like = new Like();
-        // $user = Auth::user();
-        // $like->post_id = $postId;
-        // $like->user_id = $user->id;
-        // $like->save();
-        // return redirect()->back();
-
         $user = Auth::user();
         $userId = $user->id;
         $existingLike = Like::where('user_id', $userId)->where('post_id', $postId)->first();

@@ -12,4 +12,9 @@ class User extends Model implements AuthenticatableContract
     use Authenticatable;
 
     protected $fillable = ['name', 'email', 'password', 'profile_photo', 'bio', 'interests', 'type'];
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 }

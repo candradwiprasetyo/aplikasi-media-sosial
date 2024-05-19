@@ -26,4 +26,14 @@ class Post extends Model
     {
         return $this->likes()->where('user_id', $userId)->exists();
     }
+
+    public function commentCount()
+    {
+        return $this->comments()->count();
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

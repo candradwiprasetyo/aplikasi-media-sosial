@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -21,8 +20,6 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'confirmed'],
-            'bio' => ['nullable', 'string', 'max:255'],
-            'interests' => ['nullable', 'string', 'max:255'],
         ]);
     }
 
@@ -32,13 +29,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'bio' => $data['bio'] ?? null,
-            'interests' => $data['interests'] ?? null,
         ]);
-    
-        if (isset($data['profile_photo'])) {
-            $user->update(['profile_photo' => $data['profile_photo']->store('photos', 'public')]);
-        }
     
         return $user;
     }
@@ -46,9 +37,7 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         $this->validator($request->all())->validate();
-
         $this->create($request->all());
-
-        return redirect()->route('login')->with('success', 'Registration successful! Please login.');
+        return redirect()->route('login')->with('success', 'Registrasi berhasil, silakan melakukan login');
     }
 }

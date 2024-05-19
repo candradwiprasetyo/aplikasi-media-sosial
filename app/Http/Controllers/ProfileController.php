@@ -17,7 +17,7 @@ class ProfileController extends Controller
 
         $request->validate([
             'name' => 'required|string|max:255',
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // maksimal 2MB
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'bio' => 'nullable|string|max:255',
             'interests' => 'nullable|string|max:255',
         ]);
